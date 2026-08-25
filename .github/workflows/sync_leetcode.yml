@@ -2,15 +2,16 @@ name: Sync Leetcode
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 8 * * *"   # daily at 8am UTC
+    - cron: "0 8 * * *"
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Sync
-        uses: lootek/leetcode-sync@v2.0.0
+        uses: joshcai/leetcode-sync@v1.7
         with:
           github-token: ${{ github.token }}
           leetcode-csrf-token: ${{ secrets.LEETCODE_CSRF_TOKEN }}
           leetcode-session: ${{ secrets.LEETCODE_SESSION }}
           destination-folder: leetcode
+          verbose: true
